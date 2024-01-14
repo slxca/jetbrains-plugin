@@ -1,0 +1,42 @@
+
+<idea-plugin>
+    <id>com.intelliic.jetbrains</id>
+    <name>Intelliic</name>
+    <version>0.0.1</version>
+    <idea-version since-build="221" />
+    <vendor email="contact@intelliic.com" url="https://intelliic.com">Intelliic</vendor>
+
+    <description>
+        <![CDATA[
+            Intelliic is an IDE plugin that tracks statistics on IDE usage.<br /><br />
+            <h2>Installation & Setup</h2>
+            <ol>
+                <li>Inside your IDE, select <b>Preferences -&gt; Plugins</b>.</a>.</li>
+                <li>Search for <b>PrismStats.</b></li>
+                <li>Click the green <b>Install</b> button.</li>
+                <li>Restart your IDE.</li>
+                <li>Enter your <a href="https://intelliic.com/dashboard/settings/key">API Key</a> in <b>Tools -&gt; Intelliic -&gt; Enter API Key</b>, then click Save.</li>
+                <li>Use your IDE and your coding activity will be displayed on your <a href="https://intelliic.com/dashboard">Intelliic Dashboard</a>.</li>
+            </ol>
+
+            <h2>Sourcecode</h2>
+            <a href="https://github.com/intleliic/jetbrains-prismstats">View on GitHub</a>
+        ]]>
+    </description>
+
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup displayType="BALLOON" id="com.intelliic.jetbrains.notification" />
+    </extensions>
+
+    <application-components>
+        <component>
+            <implementation-class>com.intelliic.jetbrains.Configuration</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.intelliic.jetbrains.Intelliic</implementation-class>
+        </component>
+    </application-components>
+</idea-plugin>
