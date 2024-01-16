@@ -31,6 +31,11 @@
         <notificationGroup displayType="BALLOON" id="com.intelliic.jetbrains.notification" />
     </extensions>
 
+    <applicationListeners>
+        <listener class="com.intelliic.jetbrains.listener.DocumentListener"
+                  topic="com.intellij.openapi.editor.event.DocumentListener"/>
+    </applicationListeners>
+
     <application-components>
         <component>
             <implementation-class>com.intelliic.jetbrains.Configuration</implementation-class>

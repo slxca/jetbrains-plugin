@@ -1,11 +1,13 @@
 package com.intelliic.jetbrains;
 
+import com.intelliic.jetbrains.listener.DocumentListener;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.util.Disposer;
 import com.sun.net.httpserver.HttpServer;
 
@@ -22,7 +24,7 @@ public class Intelliic implements ApplicationComponent {
 
         Notification notification = new Notification(
                 "com.intelliic.jetbrains.notification",
-                "IDE is not connected",
+                "Intelliic: IDE is not connected",
                 "Your IDE is not connected. No stats are tracked!",
                 NotificationType.WARNING
         );
@@ -45,8 +47,6 @@ public class Intelliic implements ApplicationComponent {
             httpServer.createContext("/", new WebHandler());
             httpServer.setExecutor(null);
             httpServer.start();
-        } catch (IOException e) {
-            return;
-        }
+        } catch (IOException ignored) {}
     }
 }
