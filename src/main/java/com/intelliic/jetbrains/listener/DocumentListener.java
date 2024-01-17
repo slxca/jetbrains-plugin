@@ -1,13 +1,22 @@
 package com.intelliic.jetbrains.listener;
 
+import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.event.DocumentEvent;
-import com.intellij.openapi.vcs.update.UpdatedFilesListener;
-
-import java.util.Set;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import org.jetbrains.annotations.NotNull;
 
 public class DocumentListener implements com.intellij.openapi.editor.event.DocumentListener {
 
-    public void listener(DocumentEvent event) {
-        System.out.printf(String.valueOf(event.getDocument().getLineCount()));
+    @Override
+    public void documentChanged(@NotNull DocumentEvent event) {
+        Document document = event.getDocument();
+
+        //System.out.println(document.getLineCount());
+
+        Project[] projects = ProjectManager.getInstance().getOpenProjects();
+        for (Project project : projects) {
+            //System.out.println(project);
+        }
     }
 }

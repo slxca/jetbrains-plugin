@@ -1,14 +1,16 @@
 package com.intelliic.jetbrains;
 
 import com.intelliic.jetbrains.listener.DocumentListener;
+import com.intelliic.jetbrains.listener.ProjectListener;
+import com.intellij.analysis.problemsView.ProblemsListener;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
-import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.editor.EditorFactory;
-import com.intellij.openapi.util.Disposer;
+import com.intellij.openapi.project.Project;
+import com.intellij.util.messages.MessageBusConnection;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -16,10 +18,11 @@ import java.net.InetSocketAddress;
 
 public class Intelliic implements ApplicationComponent {
 
-    public Intelliic() {}
+    public Intelliic(Project project) {
 
-    public void initComponent() {
-        initListeners();
+        if(project == null) return;
+
+        initListeners(project);
         initHttpServer();
 
         Notification notification = new Notification(
@@ -35,9 +38,12 @@ public class Intelliic implements ApplicationComponent {
         Notifications.Bus.notify(notification);
     }
 
-    public static void initListeners() {
+    public static void initListeners(Project project) {
         ApplicationManager.getApplication().invokeLater(() -> {
-            Disposable disposable = Disposer.newDisposable("intelliic_debug");
+            EditorFactory.getInstance().getEventMulticaster().addDocumentListener(new DocumentListener());
+
+            MessageBusConnection messageBusConnection = project.getMessageBus().connect();
+            messageBusConnection.subscribe(ProblemsListener.TOPIC, new ProjectListener());
         });
     }
 
