@@ -1,16 +1,9 @@
 package com.intelliic.jetbrains;
 
-import com.intelliic.jetbrains.listener.DocumentListener;
-import com.intelliic.jetbrains.listener.ProjectListener;
-import com.intellij.analysis.problemsView.ProblemsListener;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.editor.EditorFactory;
-import com.intellij.openapi.project.Project;
-import com.intellij.util.messages.MessageBusConnection;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -18,11 +11,7 @@ import java.net.InetSocketAddress;
 
 public class Intelliic implements ApplicationComponent {
 
-    public Intelliic(Project project) {
-
-        if(project == null) return;
-
-        initListeners(project);
+    public Intelliic() {
         initHttpServer();
 
         Notification notification = new Notification(
@@ -36,15 +25,6 @@ public class Intelliic implements ApplicationComponent {
         notification.addAction(new Actions.CloseNotificationAction(notification));
 
         Notifications.Bus.notify(notification);
-    }
-
-    public static void initListeners(Project project) {
-        ApplicationManager.getApplication().invokeLater(() -> {
-            EditorFactory.getInstance().getEventMulticaster().addDocumentListener(new DocumentListener());
-
-            MessageBusConnection messageBusConnection = project.getMessageBus().connect();
-            messageBusConnection.subscribe(ProblemsListener.TOPIC, new ProjectListener());
-        });
     }
 
     public static void initHttpServer() {
