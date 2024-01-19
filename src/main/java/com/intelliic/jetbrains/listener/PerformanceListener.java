@@ -1,5 +1,6 @@
 package com.intelliic.jetbrains.listener;
 
+import com.intelliic.jetbrains.Intelliic;
 import com.intellij.diagnostic.IdePerformanceListener;
 import com.intellij.diagnostic.ThreadDump;
 import com.sun.management.OperatingSystemMXBean;
@@ -37,6 +38,11 @@ public class PerformanceListener implements IdePerformanceListener {
 
         System.out.println("System RAM Usage: " + physicalUsesMemorySize + " MB (" + physicalUsesMemorySize + "/" + physicalMemorySize + " (" + physicalFreeMemorySize + "))");
 
+        System.out.println("---------------------------------");
+
+        Intelliic intelliic = new Intelliic();
+        System.out.println(intelliic.getCollector());
+        System.out.println(intelliic.getSession());
 
         System.out.println("---------------------------------");
 

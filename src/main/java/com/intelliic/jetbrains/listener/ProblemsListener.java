@@ -14,6 +14,8 @@ public class ProblemsListener implements com.intellij.analysis.problemsView.Prob
     @Override
     public void problemDisappeared(@NotNull Problem problem) {
         //System.out.println("DISAPPEARED");
+
+
     }
 
     @Override

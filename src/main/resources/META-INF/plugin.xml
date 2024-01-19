@@ -37,6 +37,7 @@
     </applicationListeners>
 
     <projectListeners>
+        <listener class="com.intelliic.jetbrains.listener.ProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener" />
         <listener class="com.intelliic.jetbrains.listener.ProblemsListener" topic="com.intellij.analysis.problemsView.ProblemsListener" />
     </projectListeners>
 

@@ -11,6 +11,9 @@ import java.net.InetSocketAddress;
 
 public class Intelliic implements ApplicationComponent {
 
+    public Session session;
+    public Session.Collector collector;
+
     public Intelliic() {
         initHttpServer();
 
@@ -34,5 +37,21 @@ public class Intelliic implements ApplicationComponent {
             httpServer.setExecutor(null);
             httpServer.start();
         } catch (IOException ignored) {}
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public Session.Collector getCollector() {
+        return collector;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public void setCollector(Session.Collector collector) {
+        this.collector = collector;
     }
 }
