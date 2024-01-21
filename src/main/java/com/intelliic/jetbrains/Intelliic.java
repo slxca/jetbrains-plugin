@@ -1,33 +1,48 @@
 package com.intelliic.jetbrains;
 
+import com.intelliic.jetbrains.service.ActionService;
+import com.intelliic.jetbrains.service.PersistentService;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.sun.net.httpserver.HttpServer;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class Intelliic implements ApplicationComponent {
 
-    public Session session;
-    public Session.Collector collector;
+    public Intelliic() {}
 
-    public Intelliic() {
+    @Override
+    public void initComponent() {
         initHttpServer();
 
-        Notification notification = new Notification(
-                "com.intelliic.jetbrains.notification",
-                "Intelliic: IDE is not connected",
-                "Your IDE is not connected. No stats are tracked!",
-                NotificationType.WARNING
-        );
+        if(!isPluginConnected()) {
+            Notification notification = new Notification(
+                    "com.intelliic.jetbrains.notification",
+                    "Intelliic: IDE is not connected",
+                    "Your IDE is not connected. No stats are tracked!",
+                    NotificationType.WARNING
+            );
 
-        notification.addAction(new Actions.ConnectIdeAction());
-        notification.addAction(new Actions.CloseNotificationAction(notification));
+            notification.addAction(new ActionService.ConnectIdeAction());
+            notification.addAction(new ActionService.CloseNotificationAction(notification));
 
-        Notifications.Bus.notify(notification);
+            Notifications.Bus.notify(notification);
+        }
+    }
+
+    public static boolean isCliInstalled() {
+        String cliFilePath = System.getProperty("user.home").replaceAll("\\\\", "/") + "/.intelliic/intelliic-cli.exe";
+        File cliFile = new File(cliFilePath);
+        return cliFile.exists();
+    }
+
+    public static boolean isPluginConnected() {
+        return !PersistentService.getInstance().getToken().isEmpty();
     }
 
     public static void initHttpServer() {
@@ -37,21 +52,5 @@ public class Intelliic implements ApplicationComponent {
             httpServer.setExecutor(null);
             httpServer.start();
         } catch (IOException ignored) {}
-    }
-
-    public Session getSession() {
-        return session;
-    }
-
-    public Session.Collector getCollector() {
-        return collector;
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
-    public void setCollector(Session.Collector collector) {
-        this.collector = collector;
     }
 }

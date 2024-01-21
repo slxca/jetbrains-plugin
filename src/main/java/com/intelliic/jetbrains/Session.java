@@ -29,9 +29,5 @@ public class Session {
         return project;
     }
 
-    public static class Collector {
-
-
-
-    }
+    public static class Collector {}
 }

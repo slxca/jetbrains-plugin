@@ -29,6 +29,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <notificationGroup displayType="BALLOON" id="com.intelliic.jetbrains.notification" />
+        <postStartupActivity implementation="com.intelliic.jetbrains.PluginStartup" />
     </extensions>
 
     <applicationListeners>
@@ -43,10 +44,16 @@
 
     <application-components>
         <component>
-            <implementation-class>com.intelliic.jetbrains.Configuration</implementation-class>
+            <implementation-class>com.intelliic.jetbrains.service.PersistentService</implementation-class>
         </component>
         <component>
             <implementation-class>com.intelliic.jetbrains.Intelliic</implementation-class>
         </component>
     </application-components>
+
+    <actions>
+        <action id="IntelliicSettingsDialog" class="com.intelliic.jetbrains.service.ActionService$SettingsDialogAction" text="Intelliic Settings">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>

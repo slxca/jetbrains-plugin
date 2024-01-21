@@ -1,13 +1,14 @@
-package com.intelliic.jetbrains;
+package com.intelliic.jetbrains.service;
 
+import com.intelliic.jetbrains.dialog.SettingsDialog;
 import com.intellij.notification.Notification;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class Actions {
+public class ActionService {
 
-    static class ConnectIdeAction extends AnAction {
+    public static class ConnectIdeAction extends AnAction {
         public ConnectIdeAction() {
             super("Connect IDE");
         }
@@ -18,7 +19,7 @@ public class Actions {
         }
     }
 
-    static class CloseNotificationAction extends AnAction {
+    public static class CloseNotificationAction extends AnAction {
         private final Notification notification;
         public CloseNotificationAction(Notification notification) {
             super("Ignore");
@@ -28,6 +29,18 @@ public class Actions {
         @Override
         public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
             notification.expire();
+        }
+    }
+
+    public class SettingsDialogAction extends AnAction {
+        public SettingsDialogAction() {
+            super("Intelliic Settings");
+        }
+
+        @Override
+        public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
+            SettingsDialog settingsDialog = new SettingsDialog();
+            settingsDialog.show();
         }
     }
 }

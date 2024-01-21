@@ -1,13 +1,10 @@
 package com.intelliic.jetbrains.listener;
 
-import com.intelliic.jetbrains.Intelliic;
 import com.intellij.diagnostic.IdePerformanceListener;
 import com.intellij.diagnostic.ThreadDump;
-import com.sun.management.OperatingSystemMXBean;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.lang.management.ManagementFactory;
 
 public class PerformanceListener implements IdePerformanceListener {
 
@@ -21,6 +18,7 @@ public class PerformanceListener implements IdePerformanceListener {
     public void uiResponded(long latencyMs) {
         //System.out.println(latencyMs);
 
+        /*
         OperatingSystemMXBean osBean = (com.sun.management.OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
 
         double cpuLoad = osBean.getSystemCpuLoad();
@@ -39,13 +37,7 @@ public class PerformanceListener implements IdePerformanceListener {
         System.out.println("System RAM Usage: " + physicalUsesMemorySize + " MB (" + physicalUsesMemorySize + "/" + physicalMemorySize + " (" + physicalFreeMemorySize + "))");
 
         System.out.println("---------------------------------");
-
-        Intelliic intelliic = new Intelliic();
-        System.out.println(intelliic.getCollector());
-        System.out.println(intelliic.getSession());
-
-        System.out.println("---------------------------------");
-
+         */
     }
 }
 
