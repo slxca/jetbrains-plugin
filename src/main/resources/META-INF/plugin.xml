@@ -44,16 +44,23 @@
 
     <application-components>
         <component>
-            <implementation-class>com.intelliic.jetbrains.service.PersistentService</implementation-class>
-        </component>
-        <component>
             <implementation-class>com.intelliic.jetbrains.Intelliic</implementation-class>
         </component>
     </application-components>
 
     <actions>
-        <action id="IntelliicSettingsDialog" class="com.intelliic.jetbrains.service.ActionService$SettingsDialogAction" text="Intelliic Settings">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-        </action>
+        <group id="IntelliicActionGroup" text="Intelliic" popup="true" icon="AllIcons.Logo_welcomeScreen">
+            <add-to-group group-id="ToolsMenu" />
+
+            <action id="com.intelliic.jetbrains.action.TrackerSwitch"
+                    class="com.intelliic.jetbrains.action.TrackerSwitch"
+                    text="Enable Tracking"
+            />
+
+            <action id="com.intelliic.jetbrains.action.OpenSettings"
+                    class="com.intelliic.jetbrains.action.OpenSettings"
+                    text="Settings"
+            />
+        </group>
     </actions>
 </idea-plugin>

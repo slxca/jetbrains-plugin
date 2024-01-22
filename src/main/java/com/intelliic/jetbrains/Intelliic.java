@@ -1,7 +1,7 @@
 package com.intelliic.jetbrains;
 
 import com.intelliic.jetbrains.service.ActionService;
-import com.intelliic.jetbrains.service.PersistentService;
+import com.intelliic.jetbrains.service.IntelliicPersistent;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
@@ -42,7 +42,7 @@ public class Intelliic implements ApplicationComponent {
     }
 
     public static boolean isPluginConnected() {
-        return !PersistentService.getInstance().getToken().isEmpty();
+        return !IntelliicPersistent.getInstance().getToken().isEmpty();
     }
 
     public static void initHttpServer() {

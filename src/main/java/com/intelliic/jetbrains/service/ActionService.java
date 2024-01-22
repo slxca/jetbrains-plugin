@@ -1,5 +1,6 @@
 package com.intelliic.jetbrains.service;
 
+import com.intelliic.jetbrains.dialog.ConnectDialog;
 import com.intelliic.jetbrains.dialog.SettingsDialog;
 import com.intellij.notification.Notification;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -8,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class ActionService {
 
+    public ActionService() {}
+
     public static class ConnectIdeAction extends AnAction {
         public ConnectIdeAction() {
             super("Connect IDE");
@@ -15,7 +18,8 @@ public class ActionService {
 
         @Override
         public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
-
+            ConnectDialog connectDialog = new ConnectDialog();
+            connectDialog.show();
         }
     }
 
@@ -32,8 +36,8 @@ public class ActionService {
         }
     }
 
-    public class SettingsDialogAction extends AnAction {
-        public SettingsDialogAction() {
+    public static class OpenSettingsDialogAction extends AnAction {
+        public OpenSettingsDialogAction() {
             super("Intelliic Settings");
         }
 

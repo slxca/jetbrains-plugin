@@ -6,16 +6,17 @@ import org.jetbrains.annotations.NotNull;
 
 @Service
 @State(name = "IntelliicPersistent", storages = {@Storage("intelliic_settings.xml")})
-public final class PersistentService implements PersistentStateComponent<PersistentService.State> {
+public final class IntelliicPersistent implements PersistentStateComponent<IntelliicPersistent.State> {
 
     public static class State {
         public String token = "";
+        public boolean trackingEnabled = true;
     }
 
     private final State intelliicState = new State();
 
-    public static PersistentService getInstance() {
-        return ServiceManager.getService(PersistentService.class);
+    public static IntelliicPersistent getInstance() {
+        return ServiceManager.getService(IntelliicPersistent.class);
     }
 
     @Override
@@ -34,5 +35,12 @@ public final class PersistentService implements PersistentStateComponent<Persist
 
     public String getToken() {
         return intelliicState.token;
+    }
+
+    public void setTrackingEnabled(boolean state) {
+        intelliicState.trackingEnabled = state;
+    }
+    public boolean getTrackingEnabled() {
+        return intelliicState.trackingEnabled;
     }
 }
