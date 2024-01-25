@@ -3,13 +3,13 @@ package com.intelliic.jetbrains.dialog;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class SettingsDialog extends JDialog {
+public class HELLOWORLDDIALOG extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private JPasswordField passwordField1;
 
-    public SettingsDialog() {
+    public HELLOWORLDDIALOG() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -53,7 +53,7 @@ public class SettingsDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        SettingsDialog dialog = new SettingsDialog();
+        HELLOWORLDDIALOG dialog = new HELLOWORLDDIALOG();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

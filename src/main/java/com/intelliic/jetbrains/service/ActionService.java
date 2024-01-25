@@ -1,7 +1,5 @@
 package com.intelliic.jetbrains.service;
 
-import com.intelliic.jetbrains.dialog.ConnectDialog;
-import com.intelliic.jetbrains.dialog.SettingsDialog;
 import com.intellij.notification.Notification;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -18,8 +16,7 @@ public class ActionService {
 
         @Override
         public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
-            ConnectDialog connectDialog = new ConnectDialog();
-            connectDialog.show();
+
         }
     }
 
@@ -33,18 +30,6 @@ public class ActionService {
         @Override
         public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
             notification.expire();
-        }
-    }
-
-    public static class OpenSettingsDialogAction extends AnAction {
-        public OpenSettingsDialogAction() {
-            super("Intelliic Settings");
-        }
-
-        @Override
-        public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
-            SettingsDialog settingsDialog = new SettingsDialog();
-            settingsDialog.show();
         }
     }
 }

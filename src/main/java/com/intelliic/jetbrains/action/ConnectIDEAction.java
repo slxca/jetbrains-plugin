@@ -1,20 +1,20 @@
 package com.intelliic.jetbrains.action;
 
-import com.intelliic.jetbrains.dialog.SettingsDialog;
+import com.intelliic.jetbrains.dialog.HELLOWORLDDIALOG;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class OpenSettings extends AnAction {
+public class ConnectIDEAction extends AnAction {
 
-    public OpenSettings() {
-        super("Settings");
+    public ConnectIDEAction() {
+        super("Connect IDE");
     }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
-        SettingsDialog settingsDialog = new SettingsDialog();
-        settingsDialog.show();
+        HELLOWORLDDIALOG helloworlddialog = new HELLOWORLDDIALOG();
+        helloworlddialog.show();
     }
 
 }
