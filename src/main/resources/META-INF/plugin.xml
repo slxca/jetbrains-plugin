@@ -58,7 +58,7 @@
             />
 
             <action id="com.intelliic.jetbrains.action.OpenSettings"
-                    class="com.intelliic.jetbrains.action.ConnectIDEAction"
+                    class="com.intelliic.jetbrains.action.OpenConnectAction"
             />
         </group>
     </actions>

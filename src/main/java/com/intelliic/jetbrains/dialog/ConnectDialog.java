@@ -1,15 +1,21 @@
 package com.intelliic.jetbrains.dialog;
 
+import com.intelliic.jetbrains.Intelliic;
+import com.intellij.openapi.util.IconLoader;
+
 import javax.swing.*;
 import java.awt.event.*;
 
-public class HELLOWORLDDIALOG extends JDialog {
+public class ConnectDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JTabbedPane tabbedPane1;
     private JPasswordField passwordField1;
+    private JTextArea youCanAlsoManuallyTextArea;
+    private JList list1;
 
-    public HELLOWORLDDIALOG() {
+    public ConnectDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -44,18 +50,25 @@ public class HELLOWORLDDIALOG extends JDialog {
 
     private void onOK() {
         // add your code here
+        Intelliic.stopHttpServer();
+        buttonOK.setIcon(IconLoader.getIcon("icons/loading_dark.gif"));
         dispose();
     }
 
     private void onCancel() {
         // add your code here if necessary
+        Intelliic.stopHttpServer();
         dispose();
     }
 
     public static void main(String[] args) {
-        HELLOWORLDDIALOG dialog = new HELLOWORLDDIALOG();
+        ConnectDialog dialog = new ConnectDialog();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
