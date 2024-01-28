@@ -11,6 +11,7 @@ public final class IntelliicPersistent implements PersistentStateComponent<Intel
     public static class State {
         public String token = "";
         public boolean trackingEnabled = true;
+        public boolean hideNotification = false;
     }
 
     private final State intelliicState = new State();
@@ -42,5 +43,12 @@ public final class IntelliicPersistent implements PersistentStateComponent<Intel
     }
     public boolean getTrackingEnabled() {
         return intelliicState.trackingEnabled;
+    }
+
+    public void setHideNotification(boolean state) {
+        intelliicState.hideNotification = state;
+    }
+    public boolean getHideNotification() {
+        return intelliicState.hideNotification;
     }
 }

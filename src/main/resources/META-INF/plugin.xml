@@ -49,7 +49,7 @@
     </application-components>
 
     <actions>
-        <group id="IntelliicActionGroup" text="Intelliic" popup="true" icon="AllIcons.Logo_welcomeScreen">
+        <group id="IntelliicActionGroup" text="Intelliic" popup="true" icon="/icons/logo_white_13.svg">
             <add-to-group group-id="ToolsMenu" />
 
             <action id="com.intelliic.jetbrains.action.TrackerSwitch"

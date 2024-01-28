@@ -1,6 +1,5 @@
 package com.intelliic.jetbrains;
 
-import com.intelliic.jetbrains.service.IntelliicPersistent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import org.jetbrains.annotations.NotNull;
@@ -21,9 +20,7 @@ public class PluginStartup implements StartupActivity.Background {
     public void runActivity(@NotNull Project project) {
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
         scheduledExecutorService.scheduleAtFixedRate(() -> {
-
-            System.out.println(IntelliicPersistent.getInstance().getTrackingEnabled());
-            System.out.println(IntelliicPersistent.getInstance().getToken());
+            System.out.println("--------------- Plugin Runner ----------------");
         }, 0, 5, TimeUnit.SECONDS);
     }
 

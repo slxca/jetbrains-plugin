@@ -1,6 +1,6 @@
 package com.intelliic.jetbrains.dialog;
 
-import com.intelliic.jetbrains.Intelliic;
+import com.intelliic.jetbrains.utils.HttpServer;
 import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
@@ -50,14 +50,14 @@ public class ConnectDialog extends JDialog {
 
     private void onOK() {
         // add your code here
-        Intelliic.stopHttpServer();
+        HttpServer.stopHttpServer();
         buttonOK.setIcon(IconLoader.getIcon("icons/loading_dark.gif"));
         dispose();
     }
 
     private void onCancel() {
         // add your code here if necessary
-        Intelliic.stopHttpServer();
+        HttpServer.stopHttpServer();
         dispose();
     }
 
