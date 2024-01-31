@@ -1,26 +1,19 @@
 package com.intelliic.jetbrains.dialog;
 
-import com.intelliic.jetbrains.utils.HttpServer;
-import com.intellij.openapi.util.IconLoader;
-import com.vladsch.flexmark.util.html.ui.Color;
-
 import javax.swing.*;
 import java.awt.event.*;
 
-public class ConnectDialogOld extends JDialog {
+public class TestDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JTabbedPane tabbedPane1;
-    private JPasswordField passwordField1;
-    private JTextArea youCanAlsoManuallyTextArea;
-    private JList list1;
+    public JTextField textField1;
+    public JTextPane textPane1;
 
-    public ConnectDialogOld() {
+    public TestDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -35,6 +28,7 @@ public class ConnectDialogOld extends JDialog {
         });
 
         // call onCancel() when cross is clicked
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 onCancel();
@@ -51,24 +45,18 @@ public class ConnectDialogOld extends JDialog {
 
     private void onOK() {
         // add your code here
-        HttpServer.stopHttpServer();
         dispose();
     }
 
     private void onCancel() {
         // add your code here if necessary
-        HttpServer.stopHttpServer();
         dispose();
     }
 
     public static void main(String[] args) {
-        ConnectDialogOld dialog = new ConnectDialogOld();
+        TestDialog dialog = new TestDialog();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
-    }
-
-    private void createUIComponents() {
-        // place custom component creation code here
     }
 }

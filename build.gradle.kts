@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.ir.backend.js.compile
-
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.21"
@@ -14,8 +12,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:1.18.30")
-    annotationProcessor("org.projectlombok:lombok:1.18.30")
+    compileOnly("org.projectlombok", "lombok", "1.18.30")
+    annotationProcessor("org.projectlombok", "lombok", "1.18.30")
+    implementation("com.intellij", "forms_rt", "7.0.3")
 }
 
 // Configure Gradle IntelliJ Plugin

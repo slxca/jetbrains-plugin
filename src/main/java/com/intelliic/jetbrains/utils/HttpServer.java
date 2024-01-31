@@ -20,13 +20,13 @@ public class HttpServer {
             server.createContext("/", new RootHandler());
             server.createContext("/connect", new ConnectHandler());
             server.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException ignore) {}
     }
 
     public static void stopHttpServer() {
-        server.stop(1);
+        try {
+            server.stop(0);
+        } catch (Exception ignore) {}
     }
 
     static class RootHandler implements HttpHandler {
